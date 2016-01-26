@@ -12,7 +12,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"gopkg.in/redis.v3"
+	"shunfei/redis"
 )
 
 var _ = Describe("Commands", func() {

@@ -12,11 +12,10 @@ import (
 	"testing"
 	"time"
 
+	"shunfei/redis"
+	"shunfei/redis/internal/hashtag"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	"gopkg.in/redis.v3"
-	"gopkg.in/redis.v3/internal/hashtag"
 )
 
 type clusterScenario struct {

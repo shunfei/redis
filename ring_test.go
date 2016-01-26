@@ -5,10 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"shunfei/redis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	"gopkg.in/redis.v3"
 )
 
 var _ = Describe("Redis ring", func() {

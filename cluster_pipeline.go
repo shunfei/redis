@@ -1,8 +1,6 @@
 package redis
 
-import (
-	"gopkg.in/redis.v3/internal/hashtag"
-)
+import "shunfei/redis/internal/hashtag"
 
 // ClusterPipeline is not thread-safe.
 type ClusterPipeline struct {

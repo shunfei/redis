@@ -4,10 +4,9 @@ import (
 	"strconv"
 	"sync"
 
+	"shunfei/redis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	"gopkg.in/redis.v3"
 )
 
 var _ = Describe("Multi", func() {

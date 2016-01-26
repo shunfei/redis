@@ -1,4 +1,4 @@
-package redis // import "gopkg.in/redis.v3"
+package redis // import "shunfei/redis"
 
 import (
 	"fmt"
