@@ -130,7 +130,7 @@ type connPool struct {
 
 	_closed int32
 
-	lastErr atomic.Value
+	lastErr string
 }
 
 func newConnPool(opt *Options) *connPool {
@@ -334,14 +334,11 @@ func (p *connPool) reaper() {
 }
 
 func (p *connPool) storeLastErr(err string) {
-	p.lastErr.Store(err)
+	p.lastErr = err
 }
 
 func (p *connPool) loadLastErr() string {
-	if v := p.lastErr.Load(); v != nil {
-		return v.(string)
-	}
-	return ""
+	return p.lastErr
 }
 
 //------------------------------------------------------------------------------
