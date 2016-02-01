@@ -3,11 +3,12 @@ package redis
 import (
 	"log"
 	"math/rand"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
 
-	"gopkg.in/redis.v3/internal/hashtag"
+	"shunfei/redis/internal/hashtag"
 )
 
 // ClusterClient is a Redis Cluster client representing a pool of zero
@@ -247,7 +248,6 @@ func (c *ClusterClient) setSlots(slots []ClusterSlotInfo) {
 			}
 		}
 	}
-
 	c.slotsMx.Unlock()
 }
 
@@ -255,17 +255,47 @@ func (c *ClusterClient) reloadSlots() {
 	defer atomic.StoreUint32(&c.reloading, 0)
 
 	client, err := c.randomClient()
+
 	if err != nil {
 		log.Printf("redis: randomClient failed: %s", err)
 		return
 	}
 
 	slots, err := client.ClusterSlots().Result()
+
 	if err != nil {
 		log.Printf("redis: ClusterSlots failed: %s", err)
 		return
 	}
+	slots = c.setSlotHostToRealHost(client.opt.Addr, slots)
 	c.setSlots(slots)
+}
+
+func (c *ClusterClient) setSlotHostToRealHost(addr string, slots []ClusterSlotInfo) []ClusterSlotInfo {
+	realHost := strings.Split(addr, ":")[0]
+	if realHost == "" || realHost == "127.0.0.1" || realHost == "localhost" {
+		return slots
+	}
+
+	newSlotInfo := make([]ClusterSlotInfo, 0, len(slots))
+	var realAddr string
+	for _, slot := range slots {
+		newSlot := ClusterSlotInfo{}
+		newSlot.Start = slot.Start
+		newSlot.End = slot.End
+		for _, addr := range slot.Addrs {
+			if strings.HasPrefix(addr, "127.0.0.1") {
+				realAddr = strings.Replace(addr, "127.0.0.1", realHost, 1)
+			} else if strings.HasPrefix(addr, "localhost") {
+				realAddr = strings.Replace(addr, "localhost", realHost, 1)
+			} else {
+				realAddr = addr
+			}
+			newSlot.Addrs = append(newSlot.Addrs, realAddr)
+		}
+		newSlotInfo = append(newSlotInfo, newSlot)
+	}
+	return newSlotInfo
 }
 
 func (c *ClusterClient) lazyReloadSlots() {

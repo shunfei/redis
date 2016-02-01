@@ -2,11 +2,10 @@ package redis_test
 
 import (
 	"fmt"
+	"shunfei/redis"
 	"strconv"
 	"sync"
 	"time"
-
-	"gopkg.in/redis.v3"
 )
 
 var client *redis.Client

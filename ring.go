@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"gopkg.in/redis.v3/internal/consistenthash"
-	"gopkg.in/redis.v3/internal/hashtag"
+	"shunfei/redis/internal/consistenthash"
+	"shunfei/redis/internal/hashtag"
 )
 
 var (
