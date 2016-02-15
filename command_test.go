@@ -6,9 +6,9 @@ import (
 	"sync"
 	"testing"
 
-	"shunfei/redis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/shunfei/redis"
 )
 
 var _ = Describe("Command", func() {

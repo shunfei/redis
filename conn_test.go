@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"shunfei/redis"
+	"github.com/shunfei/redis"
 )
 
 var _ = Describe("newConnDialer with bad connection", func() {

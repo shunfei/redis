@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"shunfei/redis"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/shunfei/redis"
 )
 
 const (
@@ -93,7 +93,7 @@ var _ = AfterSuite(func() {
 
 func TestGinkgoSuite(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "shunfei/redis")
+	RunSpecs(t, "github.com/shunfei/redis")
 }
 
 //------------------------------------------------------------------------------
