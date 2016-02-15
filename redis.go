@@ -1,4 +1,4 @@
-package redis // import "shunfei/redis"
+package redis // import "github.com/shunfei/redis"
 
 import (
 	"fmt"

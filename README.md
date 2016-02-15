@@ -3,26 +3,26 @@
 Supports:
 
 - Redis 3 commands except QUIT, MONITOR, SLOWLOG and SYNC.
-- [Pub/Sub](http://godoc.org/shunfei/redis#PubSub).
-- [Transactions](http://godoc.org/shunfei/redis#Multi).
-- [Pipelining](http://godoc.org/shunfei/redis#Client.Pipeline).
-- [Scripting](http://godoc.org/shunfei/redis#Script).
-- [Timeouts](http://godoc.org/shunfei/redis#Options).
-- [Redis Sentinel](http://godoc.org/shunfei/redis#NewFailoverClient).
-- [Redis Cluster](http://godoc.org/shunfei/redis#NewClusterClient).
-- [Ring](http://godoc.org/shunfei/redis#NewRing).
+- [Pub/Sub](http://godoc.org/github.com/shunfei/redis#PubSub).
+- [Transactions](http://godoc.org/github.com/shunfei/redis#Multi).
+- [Pipelining](http://godoc.org/github.com/shunfei/redis#Client.Pipeline).
+- [Scripting](http://godoc.org/github.com/shunfei/redis#Script).
+- [Timeouts](http://godoc.org/github.com/shunfei/redis#Options).
+- [Redis Sentinel](http://godoc.org/github.com/shunfei/redis#NewFailoverClient).
+- [Redis Cluster](http://godoc.org/github.com/shunfei/redis#NewClusterClient).
+- [Ring](http://godoc.org/github.com/shunfei/redis#NewRing).
 - [Cache friendly](https://github.com/go-redis/cache).
 - [Rate limiting](https://github.com/go-redis/rate).
 - [Distributed Locks](https://github.com/bsm/redis-lock).
 
-API docs: http://godoc.org/shunfei/redis.
-Examples: http://godoc.org/shunfei/redis#pkg-examples.
+API docs: http://godoc.org/github.com/shunfei/redis.
+Examples: http://godoc.org/github.com/shunfei/redis#pkg-examples.
 
 ## Installation
 
 Install:
 
-    go get shunfei/redis
+    go get github.com/shunfei/redis
 
 ## Quickstart
 
@@ -66,7 +66,7 @@ func ExampleClient() {
 
 ## Howto
 
-Please go through [examples](http://godoc.org/shunfei/redis#pkg-examples) to get an idea how to use this package.
+Please go through [examples](http://godoc.org/github.com/shunfei/redis#pkg-examples) to get an idea how to use this package.
 
 ## Look and feel
 

@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"shunfei/redis/internal/hashtag"
+	"github.com/shunfei/redis/internal/hashtag"
 )
 
 // ClusterClient is a Redis Cluster client representing a pool of zero

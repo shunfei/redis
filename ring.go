@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"shunfei/redis/internal/consistenthash"
-	"shunfei/redis/internal/hashtag"
+	"github.com/shunfei/redis/internal/consistenthash"
+	"github.com/shunfei/redis/internal/hashtag"
 )
 
 var (
