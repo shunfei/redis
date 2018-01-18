@@ -604,8 +604,8 @@ func clusterSlotInfoSliceParser(cn *conn, n int64) (interface{}, error) {
 			if err != nil {
 				return nil, err
 			}
-			if n != 2 {
-				return nil, fmt.Errorf("got %d elements in cluster info address, expected 2", n)
+			if n < 2 {
+				return nil, fmt.Errorf("got %d elements in cluster info address, expected at least 2", n)
 			}
 
 			ip, err := readStringReply(cn)
@@ -616,6 +616,16 @@ func clusterSlotInfoSliceParser(cn *conn, n int64) (interface{}, error) {
 			port, err := readIntReply(cn)
 			if err != nil {
 				return nil, err
+			}
+
+			// IGNORE MSG
+			// FIX NEWER VERSION's ADDED INFO
+			// https://redis.io/commands/cluster-slots#Warnings
+			for i := int64(2); i < n; i++ {
+				_, err := readStringReply(cn)
+				if err != nil {
+					return nil, err
+				}
 			}
 
 			info.Addrs[i] = net.JoinHostPort(ip, strconv.FormatInt(port, 10))
